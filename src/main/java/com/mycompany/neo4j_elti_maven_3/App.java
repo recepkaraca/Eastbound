@@ -46,14 +46,16 @@ public class App {
         op.createGraph();
 
         // ----------------------
-        String etiket = null;
-        op.Liste(etiket);
+        
+        
         System.out.println(op.iliskiler.size());
 
         int aracSayisiCounter = 0;
 
         while (toplamArac != 0.0) {
             op.ziyaretEdilenler.clear();
+            String etiket = null;
+            op.Liste(etiket);
             for (int i = 0; i < op.iliskiler.size(); i++) {
                 op.listeEtiketSil(etiket);
                 for (String liste : op.iliskiler) {
