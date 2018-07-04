@@ -1,0 +1,6 @@
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+Load,triangle Shape,u_shaped 
+Load,circle Shape,rectangle 
+
