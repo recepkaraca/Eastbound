@@ -22,12 +22,15 @@ public class App {
     HashSet<String[]> ziyaretEdilenler;
     HashSet<String> iliskiler;
     HashSet<String[]> kurallar;
+    HashSet<ArrayList<String[]>> blackList;
+    ArrayList<String[]> gidilenYollar;
+    int flagSayac = 0;
     Double max;
     String etiketDeger;
     double toplamEastAracSayisi;
-    HashSet<String[]> blackList;
     int kuralSayisi = 0;
     int eastWestArac = 0;
+    String oncekiKural;
 
     static final File databaseDirectory = new File("D:\\\\Neo4j_Store\\\\neo4jDatabases\\\\database-42a4c9a7-851a-4405-9506-b7b0402114a4\\\\installation-3.4.1\\\\data\\\\databases\\\\graph.db");
     GraphDatabaseService db;
@@ -35,9 +38,10 @@ public class App {
     public App(GraphDatabaseService db) {
         this.db = db;
         ziyaretEdilenler = new HashSet<String[]>();
-        blackList = new HashSet<String[]>();
+        blackList = new HashSet<ArrayList<String[]>>();
         iliskiler = new HashSet<String>();
         kurallar = new HashSet<String[]>();
+        gidilenYollar = new ArrayList<>();
         etiketDeger = null;
         max = 0.0;
     }
@@ -63,8 +67,12 @@ public class App {
             op.ziyaretEdilenler.clear();
             String etiket = null;
             op.Liste(etiket);
-
+            System.out.println("Ziyaret size: ////**/*/*/*" + op.ziyaretEdilenler.size());
+            for (String[] ziyaret : op.ziyaretEdilenler) {
+                System.out.println("Ziyaret0: " + ziyaret[0]);
+            }
             for (int i = 0; i < op.iliskiler.size(); i++) {
+
                 op.listeEtiketSil(etiket);
 //                for (String liste : op.iliskiler) {
 //                    System.out.println(liste);
@@ -82,6 +90,8 @@ public class App {
                 deger[1] = op.etiketDeger;
                 op.ziyaretEdilenler.add(deger);
                 op.ziyaretEdilenler.remove("");
+                op.gidilenYollar.add(deger);
+                op.gidilenYollar.remove("");
                 op.Liste(etiket);
 //                if (op.max < 0.6) {
 //                    break;
@@ -99,32 +109,38 @@ public class App {
             System.out.println("East West Toplam: " + op.eastWestArac);
             System.out.println("Güven değeri: " + (double) modelEastAracSayisi / op.eastWestArac);
             System.out.println("Support: " + modelEastAracSayisi / op.toplamEastAracSayisi);
-            if (modelEastAracSayisi / op.toplamEastAracSayisi > 0.1 && (double) modelEastAracSayisi / op.eastWestArac > 0.6) {/// !!!HATA
+            if (modelEastAracSayisi / op.toplamEastAracSayisi > 0.1 && (double) modelEastAracSayisi / op.eastWestArac > 0) {/// !!!HATA
 //                System.out.println("Support değeri: "+modelEastAracSayisi/op.toplamEastAracSayisi);
                 op.bulunanlariSil();
                 toplamArac -= modelEastAracSayisi;
                 System.out.println("Toplam araç: " + toplamArac);
                 kuralMi = true;
+                op.flagSayac = 0;
+                op.gidilenYollar.clear();
             } else {
-
+                ArrayList<String[]> blackArray = new ArrayList<>();
+                blackArray.clear();
                 for (String[] list : op.ziyaretEdilenler) {
                     String[] deger = new String[2];
                     deger[0] = list[0];
                     deger[1] = list[1];
-                    op.blackList.add(deger);
-
+                    blackArray.add(deger);
                 }
+                op.blackList.add(blackArray);
                 kuralMi = false;
             }
-            if(kuralMi){
-               op.dosyayaYaz(); 
+            if (kuralMi) {
+                op.dosyayaYaz();
             }
-            
+
+            System.out.println("Black list size: " + op.blackList.size());
             op.eastWestArac = 0;
             aracSayisiCounter++;
             System.out.println("\n");
             // op.bulunanlariSil();
+
         }
+
 //        System.out.println(op.kuralSayisi);
         // ------------------------
         op.shutdownGraph();
@@ -179,6 +195,11 @@ public class App {
         }
     }
 
+    /**
+     * listede ki etiketletii
+     *
+     * @param etiket etiket
+     */
     public void listeEtiketSil(String etiket) {
         if (etiket != null) {
             iliskiler.remove(etiket);
@@ -260,8 +281,8 @@ public class App {
         BufferedWriter bWriter = new BufferedWriter(fileWriter);
         System.out.println("********************");
         for (String[] liste : ziyaretEdilenler) {
-            str += liste[0]+","+liste[1]+" ";
-            System.out.println("Ziyaret edilenler: "+liste[0]+","+liste[1]);
+            str += liste[0] + "," + liste[1] + " ";
+            System.out.println("Ziyaret edilenler: " + liste[0] + "," + liste[1]);
         }
         System.out.println("(\"********************\");");
         bWriter.write(str);
@@ -355,11 +376,14 @@ public class App {
                 toplamEastAracSayisi = Double.parseDouble(toplamEast.getString("veri"));
             }
             boolean flag = false;
+
             for (String liste : iliskiler) {
                 if (!(liste.equalsIgnoreCase("direction"))) {
                     ResultSet rsRelValues = stmt
                             .executeQuery("MATCH (n:Car)-[r:" + liste + "]->(b) return distinct(b.value) as value");
                     eastSumNumber = 0.0;
+                    int blackListCounter = 0;
+
                     while (rsRelValues.next()) {
 
                         String[] deger = new String[2];
@@ -367,14 +391,51 @@ public class App {
                         deger[1] = rsRelValues.getString("value");
 
                         flag = false;
-                        for (String[] etiketDegerleri : blackList) {
-                            if (etiketDegerleri[0].contains(deger[0]) && etiketDegerleri[1].contains(deger[1])) {
-                                flag = true;
+
+//                        for (ArrayList<String[]> etiketDegerleri : blackList) {
+//
+//                            for (int i = 0; i < etiketDegerleri.size(); i++) {
+////                                System.out.println("deger[0]: "+deger[0]+"  etiketDegerleri: "+etiketDegerleri.get(i)[0]);
+////                                System.out.println("deger[1]: "+deger[1]+"  etiketDegerleri: "+etiketDegerleri.get(i)[1]);
+//                                if (deger[0].equalsIgnoreCase(etiketDegerleri.get(i)[0]) && deger[1].equalsIgnoreCase(etiketDegerleri.get(i)[1])) {
+//                                    blackListCounter++;
+//                                }
+//                                if (blackListCounter == etiketDegerleri.size()-1) {
+//                                    flag = true;
+////                                    System.out.println("burası4234923479237498237489");
+//                                }
+//                            }
+//                            if (flag == true) {
+//                                break;
+//                            } else {
+//                                flag = false;
+//                            }
+////                            System.out.println(etiketDegerleri[0]+"-           -"+etiketDegerleri[1]);
+//                        }
+                        int ziyaretCounter = 0;
+
+                        for (ArrayList<String[]> karaListe : blackList) {
+                            for (int i = 0; i < karaListe.size(); i++) {
+                                ziyaretCounter = 0;
+                                for (int j = 0; j < gidilenYollar.size(); j++) {
+                                    if (karaListe.get(i)[0].equalsIgnoreCase(gidilenYollar.get(j)[0]) && karaListe.get(i)[1].equalsIgnoreCase(gidilenYollar.get(j)[1])) {
+                                        ziyaretCounter++;
+                                    }
+                                }
+                                if (ziyaretCounter == karaListe.size()) {
+                                    flag = true;
+                                    break;
+                                }
+                            }
+                            if (flag) {
+                                break;
                             }
                         }
                         if (flag) {
+                            flagSayac++;
                             continue;
                         }
+
                         String westSorgu = "MATCH (n:Car)-[:" + liste + "]-(a:" + liste + " {value: '"
                                 + rsRelValues.getString("value")
                                 + "'}) MATCH (n)-[:Direction]-(f:Direction {value: 'west'})";
@@ -470,10 +531,10 @@ public class App {
 				 * while(toplamArac.next()){
 				 * System.out.println(toplamArac.getString("cars")); }
              */
-            calcSayac++;
+
         }
+        calcSayac++;
         con.close();
         return etiket;
     }
 }
-

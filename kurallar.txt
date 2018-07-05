@@ -4,3 +4,265 @@ Closed,Closed Load,triangle
 Load,triangle Shape,u_shaped 
 Load,circle Shape,rectangle 
 
+Load,triangle tr_double,tr_double 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+Load,triangle Shape,u_shaped 
+Shape,rectangle Load,circle 
+
+Load,triangle tr_double,tr_double 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+Shape,u_shaped Load,triangle 
+Shape,rectangle Load,circle 
+
+Load,triangle tr_double,tr_double 
+Load,triangle Closed,Closed 
+Shape,u_shaped Load,triangle 
+Load,circle Shape,rectangle 
+Leght,tr_long 
+Load,triangle tr_double,tr_double 
+Load,triangle Closed,Closed 
+Shape,u_shaped Load,triangle 
+Load,circle Shape,rectangle 
+Leght,tr_long 
+
+Load,triangle tr_double,tr_double 
+Load,triangle Closed,Closed 
+Load,triangle Shape,u_shaped 
+Shape,rectangle Load,circle 
+Leght,tr_long 
+Leght,tr_short 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+Shape,u_shaped Load,triangle 
+Shape,rectangle Load,circle 
+Leght,tr_long 
+Leght,tr_short 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+Shape,u_shaped Load,triangle 
+Load,circle Shape,rectangle 
+Leght,tr_long 
+Leght,tr_short 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+Shape,u_shaped Load,triangle 
+Load,circle Shape,rectangle 
+Leght,tr_long 
+Leght,tr_short 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+Load,triangle tr_double,tr_double 
+Load,triangle Closed,Closed 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+
+tr_double,tr_double Load,triangle 
+
+tr_double,tr_double 
+Closed,Closed 
+Load,hexagon 
+tr_double,tr_double 
+Closed,Closed 
+Load,hexagon 
+Shape,u_shaped Load,triangle 
+Shape,rectangle Load,circle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+Closed,Closed 
+Shape,rectangle Load,hexagon 
+Shape,u_shaped Load,triangle 
+tr_double,tr_double 
+Closed,Closed 
+Load,hexagon 
+Shape,u_shaped Load,triangle 
+Shape,rectangle Load,circle 
+tr_double,tr_double 
+Closed,Closed 
+Load,hexagon 
+Shape,u_shaped Load,triangle 
+Load,circle Shape,rectangle 
+Load,triangle tr_double,tr_double 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+Closed,Closed 
+Load,hexagon Shape,rectangle 
+Shape,u_shaped Load,triangle 
+Shape,u_shaped Load,rectangle 
+Load,rectangle Leght,tr_short 
+Load,circle Shape,rectangle 
+Open_Car,Open_Car Load,rectangle 
+tr_double,tr_double Load,triangle 
+Closed,Closed Load,triangle 
+Closed,Closed 
+Shape,rectangle Load,hexagon 
+Shape,u_shaped Load,triangle 
+
+Load,triangle tr_double,tr_double 
+Load,triangle Closed,Closed 
+Closed,Closed 
+Shape,rectangle Load,hexagon 
+Load,triangle Shape,u_shaped 
+Load,rectangle Shape,u_shaped 
+Load,rectangle Leght,tr_short 
+Shape,rectangle Load,circle 
+Open_Car,Open_Car Load,rectangle 
+
+
+tr_double,tr_double Load,triangle 
+Load,triangle Closed,Closed 
+Closed,Closed 
+Shape,rectangle Load,hexagon 
+Shape,u_shaped Load,triangle 
+
+Load,triangle tr_double,tr_double 
+Closed,Closed Load,triangle 
+Closed,Closed 
+Load,hexagon Shape,rectangle 
+Load,triangle Shape,u_shaped 
+Load,rectangle Shape,u_shaped 
+Load,rectangle Leght,tr_short 
+Shape,rectangle Load,circle 
+Load,rectangle Open_Car,Open_Car 
